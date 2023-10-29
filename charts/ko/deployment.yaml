@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fistbump
+  labels:
+    app: fistbump
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fistbump
+  template:
+    metadata:
+      labels:
+        app: fistbump
+    spec:
+      containers:
+      - name: fistbump
+        image: ko://./cmd/fistbump
+        env:
+        - name: GITHUB_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: web-application
+              key: LOCALDEV_GITHUB_CLIENT_ID
+        - name: GITHUB_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: web-application
+              key: LOCALDEV_GITHUB_SECRET
+        - name: GOOGLE_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: web-application
+              key: GOOGLE_CLIENT_ID
+        - name: GOOGLE_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: web-application
+              key: GOOGLE_CLIENT_SECRET
+        - name: POSTGRES_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: web-application
+              key: DO_POSTGRES_USERNAME
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: web-application
+              key: DO_POSTGRES_PASSWORD
+        - name: POSTGRES_HOST
+          valueFrom:
+            secretKeyRef:
+              name: web-application
+              key: DO_POSTGRES_HOST
+        - name: POSTGRES_PORT
+          valueFrom:
+            secretKeyRef:
+              name: web-application
+              key: DO_POSTGRES_PORT
+        - name: POSTGRES_DBNAME
+          valueFrom:
+            secretKeyRef:
+              name: web-application
+              key: DO_POSTGRES_DBNAME
+        - name: DB_DRIVER
+          value: postgres
+        - name: ENV
+          value: production
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "200m"
