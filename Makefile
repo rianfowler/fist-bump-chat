@@ -1,22 +1,34 @@
 BINARY_NAME=fist-bump-chat
 
+.PHONY: all
 all: test build
 
+.PHONY: build
 build:
 	go build -o $(BINARY_NAME) cmd/fistbump/main.go
 
+.PHONY: test
 test:
 	go test -v ./...
 
+.PHONY: clean
 clean:
 	go clean
 	rm -f $(BINARY_NAME)
 
+.PHONY: run
 run:
 	go run cmd/fistbump/main.go
 
+.PHONY: deps
 deps:
 	go get -v -t ./...
 
-build-linux:
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o $(BINARY_NAME)_unix cmd/fistbump/main.go
+
+.PHONY: watch-run
+watch-run:
+	watchexec -e go,html -r -- make run
+
+.PHONY: watch-test
+watch-test:
+	watchexec -e go,html -r -- make test
