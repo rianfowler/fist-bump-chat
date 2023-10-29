@@ -69,9 +69,7 @@ func main() {
 
 	feedHandler := handlers.NewFeedHandler(repo)
 	authHandler := handlers.NewAuthHandler(repo, store, cfg)
-	userMiddleware := handlers.NewUserMiddleware(repo, store)
 
-	// 	engine := html.New("web/templates", ".html")
 	engine := html.NewFileSystem(http.FS(templatesFS), ".html")
 	engine.Reload(true)
 	app := fiber.New(fiber.Config{
@@ -91,7 +89,11 @@ func main() {
 	}))
 	// app.Static("/static", "./web/static")
 
-	app.Use(userMiddleware.Middleware)
+	// add mock user if SIGNIN_ENABLED is false
+	if !cfg.GetBool("SIGNIN_ENABLED") {
+		app.Use(handlers.NewMockUserMiddleware(repo, store).Middleware)
+	}
+	app.Use(handlers.NewUserMiddleware(repo, store).Middleware)
 
 	protected := app.Group("/", handlers.EnsureAuthenticated)
 	protected.Get("/feed", feedHandler.GetFeedPage)

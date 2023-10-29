@@ -11,11 +11,9 @@ import (
 )
 
 type UserInput struct {
-	Email       string
-	GithubID    int
-	Name        string
-	OAuth2token string
-	Username    string
+	Email    string
+	Name     string
+	Username string
 }
 
 type User struct {

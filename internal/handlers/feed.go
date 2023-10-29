@@ -44,7 +44,7 @@ func (fh *FeedHandler) PostNewMessage(c *fiber.Ctx) error {
 		_, err := fh.repo.CreateMessage(c.Context(), datastore.Message{
 			Message:  message,
 			UserId:   user.Id,
-			Username: user.Username,
+			Username: user.Name,
 		})
 		if err != nil {
 			log.Fatalf("postNewMessage could not add message to storage")

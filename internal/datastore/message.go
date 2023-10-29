@@ -47,7 +47,7 @@ func (er *EntRepository) ListMessages(ctx context.Context) ([]Message, error) {
 func FromEntMessage(e *ent.Message) Message {
 	log.Printf("FromEntMessage: %v", e)
 	return Message{
-		Username: e.Edges.User.Email,
+		Username: e.Edges.User.Name,
 		Message:  e.Message,
 	}
 }

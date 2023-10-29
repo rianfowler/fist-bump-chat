@@ -39,7 +39,7 @@ func (um *UserMiddleware) Middleware(c *fiber.Ctx) error {
 		Email:    user.Email,
 		Id:       user.ID,
 		Name:     user.Name,
-		Username: user.Email,
+		Username: user.Name,
 	})
 
 	return c.Next()
@@ -52,4 +52,36 @@ func EnsureAuthenticated(c *fiber.Ctx) error {
 		return c.Redirect("/login") // Redirect to the login page if not authenticated.
 	}
 	return c.Next() // Continue processing if authenticated.
+}
+
+type MockUserMiddleware struct {
+	repo  datastore.Repository
+	store *session.Store
+}
+
+func NewMockUserMiddleware(repo datastore.Repository, store *session.Store) *MockUserMiddleware {
+	return &MockUserMiddleware{repo: repo, store: store}
+}
+
+func (mum *MockUserMiddleware) Middleware(c *fiber.Ctx) error {
+	// Get sess store
+	sess, _ := mum.store.Get(c)
+
+	// Try to get user ID from session
+	_, exists := sess.Get("userID").(int)
+	if !exists {
+
+		u, err := mum.repo.UpsertUser(c.Context(), datastore.UserInput{
+			Email:    "mock@email.com",
+			Name:     "Barrington Florence",
+			Username: "mock@email.com",
+		})
+
+		if err != nil {
+			return c.Status(500).SendString(err.Error())
+		}
+		sess.Set("userID", u.ID)
+		sess.Save()
+	}
+	return c.Next()
 }
