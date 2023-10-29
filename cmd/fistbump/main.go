@@ -80,8 +80,6 @@ func main() {
 
 	app.Get("/", handlers.GetRootPage)
 	app.Get("/login", handlers.GetLoginPage)
-	app.Get("/auth/callback", authHandler.GithubOAuth2Callback)
-	app.Get("/auth/login", authHandler.GithubLoginStart)
 	app.Get("auth/login/google", authHandler.GoogleLoginStart)
 	app.Get("auth/callback/google", authHandler.GoogleOAuth2Callback)
 	staticFS, err := fs.Sub(templatesFS, "web/static")
