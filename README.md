@@ -3,7 +3,7 @@
 Start dev server:
 
 ```
-air
+make run
 ```
 
 ---
