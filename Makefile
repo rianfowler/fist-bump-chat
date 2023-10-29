@@ -24,7 +24,6 @@ run:
 deps:
 	go get -v -t ./...
 
-
 .PHONY: watch-run
 watch-run:
 	watchexec -e go,html -r -- make run
@@ -32,3 +31,7 @@ watch-run:
 .PHONY: watch-test
 watch-test:
 	watchexec -e go,html -r -- make test
+
+.PHONEY: list-todos
+list-todos:
+	@go list -f '{{.Dir}}' ./... | while read -r d; do grep -rn "TODO" $$d/*.go; done
