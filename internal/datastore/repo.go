@@ -3,7 +3,6 @@ package datastore
 import (
 	"bytes"
 	"context"
-	"fistbump/ent"
 	"fmt"
 	"html/template"
 	"os"

@@ -2,8 +2,6 @@ package datastore
 
 import (
 	"context"
-	"fistbump/ent"
-	"fistbump/ent/user"
 	"fmt"
 	"log"
 

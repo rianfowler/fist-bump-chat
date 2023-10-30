@@ -2,8 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fistbump/internal/config"
-	"fistbump/internal/datastore"
 	"io"
 	"log"
 
