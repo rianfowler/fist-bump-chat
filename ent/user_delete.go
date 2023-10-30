@@ -4,8 +4,8 @@ package ent
 
 import (
 	"context"
-	"fistbump/ent/predicate"
-	"fistbump/ent/user"
+	"github.com/rianfowler/fist-bump-chat/ent/predicate"
+	"github.com/rianfowler/fist-bump-chat/ent/user"
 
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"

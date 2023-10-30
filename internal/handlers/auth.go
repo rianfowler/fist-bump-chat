@@ -7,6 +7,9 @@ import (
 	"io"
 	"log"
 
+	"github.com/rianfowler/fist-bump-chat/internal/config"
+	"github.com/rianfowler/fist-bump-chat/internal/datastore"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
 	"golang.org/x/oauth2"

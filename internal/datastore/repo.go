@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"html/template"
 	"os"
+
+	"github.com/rianfowler/fist-bump-chat/ent"
 )
 
 type Repository interface {

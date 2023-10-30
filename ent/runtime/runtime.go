@@ -2,7 +2,7 @@
 
 package runtime
 
-// The schema-stitching logic is generated in fistbump/ent/runtime.go
+// The schema-stitching logic is generated in github.com/rianfowler/fist-bump-chat/ent/runtime.go
 
 const (
 	Version = "v0.12.4"                                         // Version of ent codegen.

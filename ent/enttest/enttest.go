@@ -4,11 +4,11 @@ package enttest
 
 import (
 	"context"
-	"fistbump/ent"
+	"github.com/rianfowler/fist-bump-chat/ent"
 	// required by schema hooks.
-	_ "fistbump/ent/runtime"
+	_ "github.com/rianfowler/fist-bump-chat/ent/runtime"
 
-	"fistbump/ent/migrate"
+	"github.com/rianfowler/fist-bump-chat/ent/migrate"
 
 	"entgo.io/ent/dialect/sql/schema"
 )

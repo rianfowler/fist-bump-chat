@@ -5,9 +5,9 @@ package ent
 import (
 	"context"
 	"database/sql/driver"
-	"fistbump/ent/message"
-	"fistbump/ent/predicate"
-	"fistbump/ent/user"
+	"github.com/rianfowler/fist-bump-chat/ent/message"
+	"github.com/rianfowler/fist-bump-chat/ent/predicate"
+	"github.com/rianfowler/fist-bump-chat/ent/user"
 	"fmt"
 	"math"
 

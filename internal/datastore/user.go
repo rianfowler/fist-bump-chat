@@ -7,6 +7,9 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/rianfowler/fist-bump-chat/ent"
+	"github.com/rianfowler/fist-bump-chat/ent/user"
+
 	"entgo.io/ent/dialect/sql"
 )
 

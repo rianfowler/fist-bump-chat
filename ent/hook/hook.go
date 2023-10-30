@@ -4,7 +4,7 @@ package hook
 
 import (
 	"context"
-	"fistbump/ent"
+	"github.com/rianfowler/fist-bump-chat/ent"
 	"fmt"
 )
 

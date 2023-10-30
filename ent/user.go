@@ -3,7 +3,7 @@
 package ent
 
 import (
-	"fistbump/ent/user"
+	"github.com/rianfowler/fist-bump-chat/ent/user"
 	"fmt"
 	"strings"
 

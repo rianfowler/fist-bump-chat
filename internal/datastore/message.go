@@ -5,6 +5,8 @@ import (
 	"fistbump/ent"
 	"fmt"
 	"log"
+
+	"github.com/rianfowler/fist-bump-chat/ent"
 )
 
 type Message struct {

@@ -9,10 +9,10 @@ import (
 	"log"
 	"reflect"
 
-	"fistbump/ent/migrate"
+	"github.com/rianfowler/fist-bump-chat/ent/migrate"
 
-	"fistbump/ent/message"
-	"fistbump/ent/user"
+	"github.com/rianfowler/fist-bump-chat/ent/message"
+	"github.com/rianfowler/fist-bump-chat/ent/user"
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect"

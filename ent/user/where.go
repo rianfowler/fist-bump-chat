@@ -3,7 +3,7 @@
 package user
 
 import (
-	"fistbump/ent/predicate"
+	"github.com/rianfowler/fist-bump-chat/ent/predicate"
 
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"

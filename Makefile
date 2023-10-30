@@ -1,11 +1,11 @@
-BINARY_NAME=fist-bump-chat
+BINARY_NAME=fistbump
 
 .PHONY: all
 all: test build
 
 .PHONY: build
 build:
-	go build -o $(BINARY_NAME) cmd/fistbump/main.go
+	go build -o $(BINARY_NAME) ./cmd/fistbump/main.go
 
 .PHONY: test
 test:
@@ -18,7 +18,7 @@ clean:
 
 .PHONY: run
 run:
-	go run cmd/fistbump/main.go
+	go run ./cmd/fistbump/main.go
 
 .PHONY: deps
 deps:

@@ -1,8 +1,9 @@
 package handlers
 
 import (
-	"fistbump/internal/datastore"
 	"log"
+
+	"github.com/rianfowler/fist-bump-chat/internal/datastore"
 
 	"github.com/gofiber/fiber/v2"
 )

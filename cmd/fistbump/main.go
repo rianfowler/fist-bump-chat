@@ -10,10 +10,10 @@ import (
 	"os"
 	"time"
 
-	"fistbump/ent"
-	"fistbump/internal/config"
-	"fistbump/internal/datastore"
-	"fistbump/internal/handlers"
+	"github.com/rianfowler/fist-bump-chat/ent"
+	"github.com/rianfowler/fist-bump-chat/internal/config"
+	"github.com/rianfowler/fist-bump-chat/internal/datastore"
+	"github.com/rianfowler/fist-bump-chat/internal/handlers"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
