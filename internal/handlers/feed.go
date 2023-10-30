@@ -9,10 +9,10 @@ import (
 )
 
 type FeedHandler struct {
-	repo datastore.Repository
+	repo datastore.MessageRepository
 }
 
-func NewFeedHandler(repo datastore.Repository) *FeedHandler {
+func NewFeedHandler(repo datastore.MessageRepository) *FeedHandler {
 	return &FeedHandler{repo: repo}
 }
 
@@ -42,7 +42,7 @@ func (fh *FeedHandler) PostNewMessage(c *fiber.Ctx) error {
 	}
 
 	if len(message) > 0 {
-		_, err := fh.repo.CreateMessage(c.Context(), datastore.Message{
+		err := fh.repo.CreateMessage(c.Context(), datastore.Message{
 			Message:  message,
 			UserId:   user.Id,
 			Username: user.Name,

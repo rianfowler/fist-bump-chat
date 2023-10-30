@@ -10,11 +10,14 @@ import (
 	"github.com/rianfowler/fist-bump-chat/ent"
 )
 
-type Repository interface {
-	CreateMessage(ctx context.Context, message Message) (*ent.Message, error)
+type UserRepository interface {
 	GetUser(ctx context.Context, GithubID int) (*ent.User, error)
-	ListMessages(ctx context.Context) ([]Message, error)
 	UpsertUser(ctx context.Context, userInput UserInput) (*ent.User, error)
+}
+
+type MessageRepository interface {
+	CreateMessage(ctx context.Context, message Message) error
+	ListMessages(ctx context.Context) ([]Message, error)
 }
 
 type EntRepository struct {

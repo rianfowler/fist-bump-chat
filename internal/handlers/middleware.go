@@ -8,11 +8,11 @@ import (
 )
 
 type UserMiddleware struct {
-	repo  datastore.Repository
+	repo  datastore.UserRepository
 	store *session.Store
 }
 
-func NewUserMiddleware(repo datastore.Repository, store *session.Store) *UserMiddleware {
+func NewUserMiddleware(repo datastore.UserRepository, store *session.Store) *UserMiddleware {
 	return &UserMiddleware{repo: repo, store: store}
 }
 
@@ -55,11 +55,11 @@ func EnsureAuthenticated(c *fiber.Ctx) error {
 }
 
 type MockUserMiddleware struct {
-	repo  datastore.Repository
+	repo  datastore.UserRepository
 	store *session.Store
 }
 
-func NewMockUserMiddleware(repo datastore.Repository, store *session.Store) *MockUserMiddleware {
+func NewMockUserMiddleware(repo datastore.UserRepository, store *session.Store) *MockUserMiddleware {
 	return &MockUserMiddleware{repo: repo, store: store}
 }
 
@@ -81,16 +81,16 @@ func (mum *MockUserMiddleware) Middleware(c *fiber.Ctx) error {
 			return c.Status(500).SendString(err.Error())
 		}
 
-		for i := 0; i < 1; i++ {
-			_, err = mum.repo.CreateMessage(c.Context(), datastore.Message{
-				Message:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-				UserId:   u.ID,
-				Username: u.Name,
-			})
-			if err != nil {
-				log.Fatalf("postNewMessage could not add message to storage")
-			}
-		}
+		// for i := 0; i < 1; i++ {
+		// 	_, err = mum.repo.CreateMessage(c.Context(), datastore.Message{
+		// 		Message:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+		// 		UserId:   u.ID,
+		// 		Username: u.Name,
+		// 	})
+		// 	if err != nil {
+		// 		log.Fatalf("postNewMessage could not add message to storage")
+		// 	}
+		// }
 
 		sess.Set("userID", u.ID)
 		sess.Save()

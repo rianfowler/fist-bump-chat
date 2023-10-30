@@ -14,18 +14,18 @@ type Message struct {
 	UserId   int
 }
 
-func (er *EntRepository) CreateMessage(ctx context.Context, message Message) (*ent.Message, error) {
-	m, err := er.client.Message.
+func (er *EntRepository) CreateMessage(ctx context.Context, message Message) error {
+	_, err := er.client.Message.
 		Create().
 		SetMessage(message.Message).
 		SetUserID(message.UserId).
 		Save(ctx)
 
 	if err != nil {
-		return nil, fmt.Errorf("failed creating message: %v", err)
+		return fmt.Errorf("failed creating message: %v", err)
 	}
 
-	return m, err
+	return nil
 }
 
 func (er *EntRepository) ListMessages(ctx context.Context) ([]Message, error) {

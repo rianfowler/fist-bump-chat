@@ -15,12 +15,12 @@ import (
 )
 
 type AuthHandler struct {
-	repo  datastore.Repository
+	repo  datastore.UserRepository
 	store *session.Store
 	cfg   *config.Configuration
 }
 
-func NewAuthHandler(repo datastore.Repository, store *session.Store, cfg *config.Configuration) *AuthHandler {
+func NewAuthHandler(repo datastore.UserRepository, store *session.Store, cfg *config.Configuration) *AuthHandler {
 	return &AuthHandler{repo: repo, store: store, cfg: cfg}
 }
 
