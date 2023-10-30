@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"fistbump/internal/datastore"
+	"log"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/session"
@@ -80,6 +81,18 @@ func (mum *MockUserMiddleware) Middleware(c *fiber.Ctx) error {
 		if err != nil {
 			return c.Status(500).SendString(err.Error())
 		}
+
+		for i := 0; i < 1000; i++ {
+			_, err = mum.repo.CreateMessage(c.Context(), datastore.Message{
+				Message:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+				UserId:   u.ID,
+				Username: u.Name,
+			})
+			if err != nil {
+				log.Fatalf("postNewMessage could not add message to storage")
+			}
+		}
+
 		sess.Set("userID", u.ID)
 		sess.Save()
 	}
