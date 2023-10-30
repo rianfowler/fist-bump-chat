@@ -1,10 +1,10 @@
 <form action="/new-message" method="post">
   <div>
-      <label for="message">Post new message:</label><br>
-      <textarea class="rounded-md border p-2" id="message" name="message" rows="4" cols="50" required></textarea>
+      <textarea class=" border p-2" id="messageTextarea" name="message" rows="4" cols="50" required></textarea>
   </div>
-  <div class="flex justify-end">
-      <a class="mr-2" href="/feed">Cancel</a>
+  <div class="flex justify-end my-2 pr-2">
+      <a class="button mr-2 px-2 flex justify-center items-center" href="/feed">Cancel</a>
+      <!-- <button onclick="closemodal()">Cancel</button> -->
       <button type="submit">Post</button>
   </div>
 </form>

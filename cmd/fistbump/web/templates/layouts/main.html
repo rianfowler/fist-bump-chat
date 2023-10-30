@@ -8,6 +8,55 @@
   <link rel="stylesheet" href="https://unpkg.com/98.css">
   <script src="static/pwa.js"></script>
   <link rel="manifest" href="static/manifest.json">
+  <style>
+    .message {
+      background: #fff;
+      box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+      display: block;
+      margin: 0;
+      padding: 12px 8px
+    }
+
+    .title-bar,
+    .window,
+    button,
+    input,
+    label,
+    option,
+    select,
+    table,
+    textarea,
+    ul.tree-view {
+      -webkit-font-smoothing: auto !important;
+      font-size: 14px;
+    }
+
+    a.button {
+      -webkit-appearance: button;
+      appearance: button;
+      background-color: transparent;
+      background-image: none;
+      background: silver;
+      box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+      color: inherit;
+      cursor: pointer;
+      font-family: inherit;
+      font-feature-settings: inherit;
+      font-size: 100%;
+      font-variation-settings: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      min-height: 23px;
+      min-width: 73px;
+      text-transform: none;
+    }
+
+    .file-menu {
+      /* box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a; */
+      box-shadow: inset 0px -1px #fff, inset 0px -2px gray;
+      background-color: silver;
+    }
+  </style>
 </head>
 
 <body hx-boost="true" class="bg-teal-600">
