@@ -11,6 +11,13 @@ build:
 test:
 	go test -v ./...
 
+.PHONY: test-file
+test-file:
+ifndef FILE
+	$(error FILE is not set)
+endif
+	go test $(FILE)
+
 .PHONY: clean
 clean:
 	go clean
@@ -24,13 +31,20 @@ run:
 deps:
 	go get -v -t ./...
 
-.PHONY: watch-run
+.PHONY: watch-rungo t
 watch-run:
 	watchexec -e go,html -r -- make run
 
 .PHONY: watch-test
 watch-test:
 	watchexec -e go,html -r -- make test
+
+.PHONY: watch-test-file
+watch-test-file:
+ifndef FILE
+	$(error FILE is not set)
+endif
+	watchexec -e go,html -r -- make test-file
 
 .PHONEY: list-todos
 list-todos:
