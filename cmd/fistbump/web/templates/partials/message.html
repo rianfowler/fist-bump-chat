@@ -1,9 +1,11 @@
+{{ define "message" }}
 <article class="flex p-4 space-x-2">
   <img
     src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
     alt="" class="flex-shrink-0 h-[75px] window">
   <div class="flex-grow overflow-hidden">
-    <div class="font-bold">{{.Username}}</div>
-    <div class="mt-2 message break-words">{{.Message}}</div>
+    <div class="font-bold">{{.Author}}</div>
+    <div class="mt-2 message break-words">{{.Content}}</div>
   </div>
 </article>
+{{ end }}

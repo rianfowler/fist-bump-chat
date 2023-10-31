@@ -17,12 +17,12 @@
       </div>
     </div>
     <div class=" m-0 flex justify-center items-center w-full">
-      {{if eq (len .messages) 0}}
+      {{if eq (len .Messages) 0}}
       <p> No messages. Try adding one </p>
       {{else}}
       <section class="w-[500px]">
-        {{range .messages }}
-        {{ template "web/templates/partials/message" .}}
+        {{range .Messages }}
+        {{ template "message" .}}
         {{end}}
       </section>
       {{end}}

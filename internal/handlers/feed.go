@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/rianfowler/fist-bump-chat/internal/datastore"
+	"github.com/rianfowler/fist-bump-chat/internal/viewmodels"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -22,9 +23,14 @@ func (fh *FeedHandler) GetFeedPage(c *fiber.Ctx) error {
 	if err != nil {
 		log.Fatalf("Could not retrieve messages")
 	}
-	return c.Render("web/templates/pages/feed", fiber.Map{
-		"messages": msgs,
-	}, "web/templates/layouts/main")
+
+	fvm, err := viewmodels.MessagesToFeedView(msgs)
+
+	if err != nil {
+		log.Fatalf("could not convert messages to viewmodel for %v, %v", msgs, err)
+	}
+
+	return c.Render("web/templates/pages/feed", fvm, "web/templates/layouts/main")
 }
 
 func (fh *FeedHandler) GetNewMessagePage(c *fiber.Ctx) error {
