@@ -1,6 +1,8 @@
 package config
 
 import (
+	"log"
+
 	"github.com/spf13/viper"
 )
 
@@ -47,13 +49,7 @@ func New() *Configuration {
 	v.SetConfigFile(".env")
 
 	if err := v.ReadInConfig(); err != nil {
-		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
-			// Config file not found; ignore if using environment variables in production
-			// TODO: add error handling
-		} else {
-			// Some other error occurred while reading the config
-			panic(err)
-		}
+		log.Println("no .env file loaded")
 	}
 
 	return &Configuration{v: v}
